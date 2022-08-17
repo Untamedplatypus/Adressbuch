@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "ef7c4044-51c6-448d-955c-288b7cfcafb4": {
+      "ProjectGuid": "ef7c4044-51c6-448d-955c-288b7cfcafb4",
+      "DisplayName": "UI.Desktop",
+      "ColorIndex": 0
+    },
+    "8b7c0242-8113-48db-8fe3-6be72b616679": {
+      "ProjectGuid": "8b7c0242-8113-48db-8fe3-6be72b616679",
+      "DisplayName": "Logic.UI",
+      "ColorIndex": 1
+    },
+    "c6a1f4da-6391-4350-a83e-b80dd24290eb": {
+      "ProjectGuid": "c6a1f4da-6391-4350-a83e-b80dd24290eb",
+      "DisplayName": "Logic",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

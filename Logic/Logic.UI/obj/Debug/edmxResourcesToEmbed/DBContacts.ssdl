@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdressbuchModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ContactsTbl">
+    <Key>
+      <PropertyRef Name="ContactID" />
+    </Key>
+    <Property Name="ContactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Firstname" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Lastname" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Sex" Type="varchar" MaxLength="50" />
+    <Property Name="Birthday" Type="datetime" />
+    <Property Name="Street" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Housenumber" Type="int" Nullable="false" />
+    <Property Name="Adressadd" Type="varchar" MaxLength="100" />
+    <Property Name="Postcode" Type="int" Nullable="false" />
+    <Property Name="Location" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="TelNum1" Type="int" />
+    <Property Name="Email" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityContainer Name="AdressbuchModelStoreContainer">
+    <EntitySet Name="ContactsTbl" EntityType="Self.ContactsTbl" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

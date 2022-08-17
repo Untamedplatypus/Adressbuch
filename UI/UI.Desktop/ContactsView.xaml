@@ -1,0 +1,132 @@
+﻿<UserControl x:Class="UI.Desktop.ContactsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UI.Desktop"
+             mc:Ignorable="d" 
+             DataContext="{Binding ContactOverviewVM, Source={StaticResource Locator}}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="15"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="3">
+            <Menu Background="#FF5E3A1B" Foreground="#E0CBA8" FontSize="14" HorizontalAlignment="Right">
+                <MenuItem Header="Neuer Kontakt" Click="NewContact_MenuItem_Click"/>
+                <MenuItem Header="Kontakte bearbeiten" Click="ButtonBearbeiten_Click"/>
+                <MenuItem Header="Kontakte löschen" Click="MultipleDelete_Click"/>
+              
+            </Menu>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Label Content="Kontakte" FontSize="22" FontFamily="Gill Sans MT Bold" Foreground="#E0CBA8" Background="#FF5E3A1B" HorizontalContentAlignment="Center" Height="40"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="2" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="114*"/>
+                <ColumnDefinition Width="113*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid SelectionChanged="DataGridSelectionChanged" Loaded="DataGrid_Loaded" Background="#FFFCEEE0" ItemsSource="{Binding ContactList, Mode=TwoWay}"  IsReadOnly="True"
+                          FontSize="16" FontFamily="Gill Sans MT Regular" CanUserResizeColumns="True" RowBackground="{x:Null}" SelectionMode="Single" 
+                      ColumnWidth="80" GridLinesVisibility="None" Grid.ColumnSpan="2" SelectedItem="{Binding SelectedListItem, Mode=TwoWay}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Vorname" Binding="{Binding Firstname}" Width="50*"/>
+                    <DataGridTextColumn Header="Nachname" Binding="{Binding Lastname}" Width="50*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="3" Background="#FF5E3A1B">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Content="{Binding FirstnameHeader}" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" FontFamily="Gill Sans MT Bold" Foreground="#E0CBA8"/>
+            <Label Grid.Column="2" Grid.Row="0" Content="{Binding LastnameHeader}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22" FontFamily="Gill Sans MT Bold" Foreground="#E0CBA8"/>
+        </Grid>
+        <Grid Background="#FFFCEEE0" Grid.Column="3" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="0"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="5"/>
+
+            </Grid.RowDefinitions>
+            <Label Content="Anrede" Grid.Column="1" Grid.Row="1" FontSize="16"></Label>
+            <Label  Content="Vorname" Grid.Column="4" Grid.Row="1" FontSize="16"/>
+            <Label Content="Nachname" Grid.Column="7" Grid.Row="1" FontSize="16"/>
+            <Label Content="Anrede" Grid.Column="11" Grid.Row="1" FontSize="16"/>
+            <Label Content="{Binding FirstnameLabel}" Grid.Column="4" Grid.Row="2"/>
+            <Label Content="{Binding LastnameLabel}" Grid.Column="7" Grid.Row="2"/>
+            <Label Content="{Binding SexLabel}" Grid.Column="1" Grid.Row="1" Height="36" Margin="0,35,0,0" Grid.RowSpan="2" VerticalAlignment="Top"/>
+
+            <Label Content="Geburtstag" Grid.Column="10" Grid.Row="1" FontSize="16"/>
+            <Label Content="{Binding BirthdayLabel}" Grid.Column="10" Grid.Row="2"/>
+
+            <Label Content="Straße" Grid.Column="4" Grid.Row="5" FontSize="16"/>
+            <Label Content="Hausnummer" Grid.Column="7" Grid.Row="5" FontSize="16"/>
+            <Label Content="Adresszusatz" Grid.Column="10" Grid.Row="5" FontSize="16"/>
+            <Label Content="{Binding StreetLabel}" Grid.Column="4" Grid.Row="6"/>
+            <Label Content="{Binding HousenumberLabel}" Grid.Column="7" Grid.Row="6"/>
+            <Label Content="{Binding AdressAddLabel}" Grid.Column="10" Grid.Row="6"/>
+
+            <Label Content="Postleitzahl" Grid.Column="4" Grid.Row="7" FontSize="16"/>
+            <Label Content="Wohnort" Grid.Column="7" Grid.Row="7" FontSize="16"/>
+            <Label Content="{Binding PostCodeLabel}" Grid.Column="4" Grid.Row="8"/>
+            <Label Content="{Binding LocationLabel}" Grid.Column="7" Grid.Row="8"/>
+
+            <Label Content="Telefonnummer" Grid.Column="4" Grid.Row="9" FontSize="16"/>
+            <Label Content="{Binding TelNum1Label}" Grid.Column="4" Grid.Row="10"/>
+
+            <Label Content="Email-Adresse" Grid.Column="7" Grid.Row="9" FontSize="16"/>
+            <Label Content="{Binding EmailLabel}" Grid.Column="7" Grid.Row="10"/>
+        </Grid>
+        <Grid Grid.Column="3" Grid.Row="3" Background="#FFFCEEE0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="15"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="3" Grid.Row="0" Command="{Binding DeleteContactBtn}" Content="Entfernen" Background="#FF5E3A1B" Foreground="#E0CBA8" FontSize="18" BorderBrush="#230C0F" Height="30" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+        </Grid>
+      
+    </Grid>
+</UserControl>
